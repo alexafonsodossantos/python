@@ -5,7 +5,9 @@
 {% block content %}
 {% if latest_produto_list %}
     {% for produto in latest_produto_list %}
-    <a class="produto" href="/loja/{{ produto.id }}/"> <img src="" style="width:90%;"> {{ produto.nome}} <br> {{ produto.preço}}</a>
+    <a class="produto" href="/loja/{{ produto.id }}/"> 
+        <div class="imagem_produto"></div>
+            {{ produto.nome}} <br> {{ produto.preço}}</a>
     {% endfor %}
 {% else %}
     <p>Não há produtos.</p>

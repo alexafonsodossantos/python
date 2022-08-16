@@ -57,15 +57,32 @@ h2 {
 	width:240px;
 	height: 320px;
 	background-color: black;
-	border: green 2px ridge;
+	border: white 2px ridge;
 	display: inline-block;
 	margin: 5px;
+    border-radius: 15px;
+    margin-top: 15px;
+    color: white;
+    text-align: center;
 
 }
 
 .produto:hover {
 	background-color: #292929;
 	transition: background 500ms;
+}
+
+.imagem_produto {
+    width: 80%;
+    height: 60%;
+    background-color: white;
+    border-radius: 15px;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    display: flex;
+    position: relative;
+
 }
 
 
