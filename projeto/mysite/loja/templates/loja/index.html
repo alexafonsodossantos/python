@@ -1,61 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja virtual - a mais virtual de todas as lojas!</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
 
-    <div class="warning">This is a warning.</div>
-    
-</body>
-</html>
+{% extends "loja/base_generic.html" %}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
+{% block content %}
 {% if latest_produto_list %}
-    <ul>
     {% for produto in latest_produto_list %}
-    {{ produto.nome}}
-    {{ produto.preço}}
+    <a class="produto" href="/loja/{{ produto.id }}/"> <img src="" style="width:90%;"> {{ produto.nome}} <br> {{ produto.preço}}</a>
     {% endfor %}
-    </ul>
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}
+{% endblock %}
 
 
 
--->
+
+
+
+
+
+
+
+
+
 

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja virtual - a mais virtual de todas as lojas!</title>
+    {% load static %}
+<link rel="stylesheet" href="{% static 'loja/style.css' %}">
+<script>
+function closeWarning() {
+    document.getElementById("warning").style.visibility = "hidden";
+}
+</script>
+</head>
+<body>
+    <div class="warning" id="warning">This is a warning.<br>
+        <button type="button" onClick="closeWarning()"> Fechar </button>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+
+
+
+{% if latest_produto_list %}
+    <ul>
+    {% for produto in latest_produto_list %}
+    {{ produto.nome}}
+    {{ produto.preço}}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há produtos.</p>
+{% endif %}
+
+
+
+-->
+

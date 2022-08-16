@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'loja/style.css' %}">
+<html lang="pt-BR">
+<meta charset="utf-8">
+<title>Meu site</title>
+
+<body>
+<div class="menu">
+<div class="menu_logo"></div>
+<a class="botao" href="#"> BUSCA POR CATEGORIAS </a>
+<a class="botao" href="#"> PROMOÇÕES </a>
+<a class="botao" href="#"> MINHA CONTA </a>
+</div>
+
+{% block content %}
+{% endblock %}
+</body>
+</html>
+
