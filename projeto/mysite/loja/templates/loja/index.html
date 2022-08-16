@@ -1,0 +1,9 @@
+{% if latest_produto_list %}
+    <ul>
+    {% for produto in latest_produto_list %}
+    <li><a href="{% url 'produto:detail' produto.id %}">{{ produto.nome}}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>Não há produtos.</p>
+{% endif %}
