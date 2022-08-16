@@ -11,6 +11,8 @@ class Produto(models.Model):
     marca = models.CharField(max_length=140)
     qtd = models.IntegerField()
     preço = models.FloatField()
+    prod_img = models.ImageField("Product Image", upload_to='static/loja/images', null=True)
+    
 
     def __str__(self):
         return self.nome
