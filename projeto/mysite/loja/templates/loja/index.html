@@ -9,7 +9,7 @@
         <div class="imagem_produto">
             <img src="{{produto.prod_img.url}}" alt="My image">
         </div>
-            {{ produto.nome}} <br> {{ produto.preço}}</a>
+            {{ produto.nome}} <br> R$ {{ produto.preço}}</a>
     {% endfor %}
 {% else %}
     <p>Não há produtos.</p>
