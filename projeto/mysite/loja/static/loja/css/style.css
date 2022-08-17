@@ -71,7 +71,7 @@ h1 {
     margin-bottom: 0.5%;
     margin-left: 0.5%;
     margin-right: 0.5%;
-    color: white;
+    background: transparent;
     text-align: justify;
     float: left;
     text-justify:distribute-all-lines;
@@ -94,14 +94,11 @@ h1 {
 }
 
 .imagem_produto {
-    width: 144px;
-    height: 144px;
-    background-color: white;
+    width:200px;
+    height: 200px;
+    background: transparent;
     border-radius: 15px;
-    margin-left: 10%;
-    margin-top: 10%;
-    margin-bottom: 10%;
-    margin-right: 10%;
+
     display: flex;
     position: relative;
     
