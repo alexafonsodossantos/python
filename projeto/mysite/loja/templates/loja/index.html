@@ -5,17 +5,18 @@
 {% block content %}
 {% if latest_produto_list %}
     {% for produto in latest_produto_list %}
-    <a class="produto" href="/loja/{{ produto.id }}/"> 
+    <div class="produto" href="/loja/{{ produto.id }}/"> 
         <div class="imagem_produto">
             <img src="{{produto.prod_img.url}}" alt="My image">
-        </div>
-            {{ produto.nome}} <br> R$ {{ produto.preço}}</a>
+            </div>
+        
+            {{ produto.nome}} <br> R$ {{ produto.preço}}</div>
     {% endfor %}
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}
 {% endblock %}
-
+"{% static 'loja/css/style.css' %}
 
 
 
