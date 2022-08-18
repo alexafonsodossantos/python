@@ -5,17 +5,12 @@
 {% block content %}
 {% if latest_produto_list %}
     {% for produto in latest_produto_list %}
-    <div class="produto" href="/loja/{{ produto.id }}/"> 
-        <a class="imagem_produto" href="/loja/{{ produto.id }}/">
-            
-            <img src="{{produto.prod_img.url}}" alt="My image" style="border-radius: 15px">
-            
-        </a>
-        
-            <a  href="/loja/{{ produto.id }}/" > {{ produto.nome}} <br> <h1 style="margin-top: -1px; padding-top: 10px; padding-bottom: 10px; color: white;">R$ {{ produto.preço}}
-
-            </a>
-        
+    <div class="produto"> 
+        <img class="imagem_produto" src="{{ produto.prod_img.url }}"> </img>       
+        <p>
+            <a href="/loja/{{ produto.id }}/" > {{ produto.nome}} 
+        </p>       
+        <a class="preco" href="/loja/{{ produto.id }}/">R$ {{ produto.preço}}</a>
     </div>
     {% endfor %}
 {% else %}
