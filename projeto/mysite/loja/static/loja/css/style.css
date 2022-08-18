@@ -60,16 +60,20 @@ h1 {
 
 .produto {
 	width:auto;
-    height: 55vh;
+    height: 40vh;
 	background-color: black;
 	border: #292929 2px solid;
     border-radius: 15px;
     background: transparent;
     text-align: center;
     min-width: 200px;
+    min-height: 300px;
     max-width: 16%!important;
-    max-height: 20% !important;
+    max-height: 30% !important;
     float: left;
+    padding: 1%;
+    margin: 0.3%;
+
 }
 
 .produto:hover {
@@ -79,13 +83,14 @@ h1 {
 
 .imagem_produto {
     width:12vw;
-    height: 24vh;
+    height: 18vh;
     min-width: 144px;
     min-height: 144px;
     background: transparent;
     border-radius: 15px;
     display: flex;
     margin: auto;
+    padding:1%;
 }
 
 
@@ -96,4 +101,10 @@ h1 {
 
 .content {
     width: 100%;
+}
+
+.nomeproduto {
+    color:#b6b6b6;
+    font-size: inherit;
+    font-weight: normal;
 }
