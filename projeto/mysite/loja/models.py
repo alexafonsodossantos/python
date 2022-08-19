@@ -12,7 +12,7 @@ class Produto(models.Model):
     qtd = models.IntegerField()
     preço = models.FloatField()
     prod_img = models.ImageField("Product Image", upload_to='loja/static/loja/images', null=True)
-    
+    descricao = models.TextField()
 
     def __str__(self):
         return self.nome
