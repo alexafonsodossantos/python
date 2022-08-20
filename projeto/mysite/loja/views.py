@@ -15,4 +15,11 @@ def detail(request, produto_id):
     produto = get_object_or_404(Produto, pk=produto_id)
     return render(request, 'loja/detail.html', {'produto': produto})
 
+def promocoes(request):
+    return render(request, 'loja/promocoes.html')
 
+def categorias(request):
+    return render(request, 'loja/categorias.html')
+
+def perfil(request):
+    return render(request, 'loja/perfil.html')

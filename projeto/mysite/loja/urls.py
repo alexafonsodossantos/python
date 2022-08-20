@@ -8,6 +8,9 @@ from . import views
 app_name = 'loja'
 urlpatterns = [
     path('', views.index, name='index'),
+    path('categorias', views.categorias, name='categorias'),
+    path('promocoes', views.promocoes, name='promocoes'),
+    path('promocoes', views.perfil, name='perfil'),
     path('<int:produto_id>/', views.detail, name='detail'),
     
 
