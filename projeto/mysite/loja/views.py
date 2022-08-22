@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse
-from .models import Produto
+from .models import Produto, Usuario, Cart
 from django.template import loader
 
 def index(request):
@@ -23,3 +23,11 @@ def categorias(request):
 
 def perfil(request):
     return render(request, 'loja/perfil.html')
+
+def cart(request, cart_id):
+    cart = Cart.objects.filter(id = cart_id)
+    template = loader.get_template('loja/cart.html')
+    context = {
+        'cart': cart,
+    }
+    return HttpResponse(template.render(context, request))
