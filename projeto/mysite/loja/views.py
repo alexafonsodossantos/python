@@ -1,5 +1,5 @@
-from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
 from .models import Produto, User, Cart
 from django.template import loader
 
@@ -32,3 +32,9 @@ def cart(request, username):
         'cart': cart,
     }
     return HttpResponse(template.render(context, request))
+
+def cart_add(request, username, product_id):
+    u = User.objects.get(username=username)
+    p = Produto.objects.get(id=product_id)
+    cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=1)
+    return redirect('/loja/cart/')
