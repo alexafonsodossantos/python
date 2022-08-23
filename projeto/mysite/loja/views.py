@@ -27,9 +27,11 @@ def perfil(request):
 def cart(request, username):
     u = User.objects.get(username=username)
     cart = Cart.objects.filter(username = u)
+    img = Produto.objects.get(id = cart[1].produtos_id.id).prod_img.url
     template = loader.get_template('loja/cart.html')
     context = {
         'cart': cart,
+        'img': img
     }
     return HttpResponse(template.render(context, request))
 

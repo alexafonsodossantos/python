@@ -5,13 +5,26 @@
 <table>
 {% if cart %}
     {% for produto in cart %}
-    <tr>
-        <td>{{produto.produtos_id}}</td>
-        <td>{{produto.qtd}}</td>
-    </tr>
+
+
+    <div class="produto"> 
+        <a href="/loja/{{ produto.produtos_id }}/">
+            <img class="imagem_produto" src="{{img}}"></img>
+        </a>       
+    </div>
+
+
     {% endfor %}
 </table>
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}
 {% endblock %}
+
+
+
+
+<tr>
+    <td>{{produto.produtos_id}}</td>
+    <td>{{produto.qtd}}</td>
+</tr>

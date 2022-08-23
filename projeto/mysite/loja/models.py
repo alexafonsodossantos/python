@@ -25,7 +25,7 @@ class Produto(models.Model):
     descricao = models.TextField()
 
     def __str__(self):
-        return self.nome
+        return str(self.id)
 
 
 class Cart(models.Model):
