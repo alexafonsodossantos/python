@@ -27,11 +27,9 @@ def perfil(request):
 def cart(request, username):
     u = User.objects.get(username=username)
     cart = Cart.objects.filter(username = u)
-    img = Produto.objects.get(id = cart[1].produtos_id.id).prod_img.url
     template = loader.get_template('loja/cart.html')
     context = {
         'cart': cart,
-        'img': img
     }
     return HttpResponse(template.render(context, request))
 
@@ -39,17 +37,20 @@ def cart_add(request):
     if request.user.is_authenticated:
         u = User.objects.get(username= request.POST.get('username'))
         p = Produto.objects.get(id= request.POST.get('product_id'))
+        img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
         if len(Cart.objects.filter(username=u, produtos_id=p ))>0:
             cart_exists = Cart.objects.get(username=u, produtos_id=p )
+            img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
             p = Produto.objects.get(id= request.POST.get('product_id'))
             q = request.POST.get('qtd') 
-            update_cart = Cart(pk=int(cart_exists.pk), username=u, produtos_id=p, qtd = cart_exists.qtd + int(q))
+            update_cart = Cart(pk=int(cart_exists.pk), username=u, produtos_id=p, qtd = cart_exists.qtd + int(q), prod_img=img)
             update_cart.save()
         else:
+            img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
             u = User.objects.get(username= request.POST.get('username'))
             p = Produto.objects.get(id= request.POST.get('product_id'))
             q = request.POST.get('qtd')
-            cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=q)
+            cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=q, prod_img = img)
     else:
         return redirect('/accounts/login')
 

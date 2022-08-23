@@ -33,6 +33,7 @@ class Cart(models.Model):
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     produtos_id = models.ForeignKey(Produto, on_delete = models.CASCADE)
     qtd = models.IntegerField(default=1)
+    prod_img = models.CharField(max_length=255)
 
 
     def __str__(self):
