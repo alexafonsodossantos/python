@@ -1,11 +1,11 @@
 from tkinter import CASCADE
 from django.db import models
-
+from django.contrib.auth import get_user_model
 # Create your models here.
 
 from django.db import models
 
-
+User=get_user_model()
 class Produto(models.Model):
     CATEGORIAS = (
         ('1', 'Processadores'),
@@ -28,21 +28,9 @@ class Produto(models.Model):
         return self.nome
 
 
-class Usuario(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    nome = models.CharField(max_length=140)
-    sobrenome = models.CharField(max_length=140)
-    email = models.CharField(max_length=140)
-    telefone = models.CharField(max_length=14)
-    username = models.CharField(max_length=140)
-    password = models.CharField(max_length=140)
-
-    def __str__(self):
-        return self.nome
-
 class Cart(models.Model):
     id = models.BigAutoField(primary_key=True)
-    userid = models.ForeignKey(Usuario, on_delete = models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
     produtos_id = models.ForeignKey(Produto, on_delete = models.CASCADE)
     qtd = models.IntegerField()
 
