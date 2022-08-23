@@ -1,6 +1,13 @@
 {% extends "loja/base_generic.html" %}
 {% load static %}
 {% block content %}
+
+<script>
+    var teste = 1
+    document.getElementById(valor).innerHTML = teste
+</script>
+
+
 <h1>Meu carrinho</h1>
 <table>
 {% if cart %}
@@ -10,7 +17,14 @@
     <div class="produto"> 
         <a href="/loja/{{ produto.produtos_id }}/">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
-        </a>       
+        </a>
+        
+        {{produto.qtd}} <br>
+        {{produto.produtos_id}} <br>
+        {{produto.preço}} <br>
+
+        <div id="valor"></div>
+        
     </div>
 
 
@@ -20,11 +34,3 @@
     <p>Não há produtos.</p>
 {% endif %}
 {% endblock %}
-
-
-
-
-<tr>
-    <td>{{produto.produtos_id}}</td>
-    <td>{{produto.qtd}}</td>
-</tr>

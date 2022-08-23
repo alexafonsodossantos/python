@@ -25,7 +25,7 @@ class Produto(models.Model):
     descricao = models.TextField()
 
     def __str__(self):
-        return str(self.id)
+        return str(self.nome)
 
 
 class Cart(models.Model):
@@ -34,6 +34,7 @@ class Cart(models.Model):
     produtos_id = models.ForeignKey(Produto, on_delete = models.CASCADE)
     qtd = models.IntegerField(default=1)
     prod_img = models.CharField(max_length=255)
+    preço = models.FloatField()
 
 
     def __str__(self):

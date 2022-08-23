@@ -38,19 +38,22 @@ def cart_add(request):
         u = User.objects.get(username= request.POST.get('username'))
         p = Produto.objects.get(id= request.POST.get('product_id'))
         img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
+        v = Produto.objects.get(id= request.POST.get('product_id')).preço
         if len(Cart.objects.filter(username=u, produtos_id=p ))>0:
             cart_exists = Cart.objects.get(username=u, produtos_id=p )
             img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
             p = Produto.objects.get(id= request.POST.get('product_id'))
-            q = request.POST.get('qtd') 
-            update_cart = Cart(pk=int(cart_exists.pk), username=u, produtos_id=p, qtd = cart_exists.qtd + int(q), prod_img=img)
+            q = request.POST.get('qtd')
+            v = Produto.objects.get(id= request.POST.get('product_id')).preço 
+            update_cart = Cart(pk=int(cart_exists.pk), username=u, produtos_id=p, qtd = cart_exists.qtd + int(q), prod_img=img, preço = float(v) * float(q))
             update_cart.save()
         else:
             img = Produto.objects.get(id= request.POST.get('product_id')).prod_img
             u = User.objects.get(username= request.POST.get('username'))
             p = Produto.objects.get(id= request.POST.get('product_id'))
             q = request.POST.get('qtd')
-            cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=q, prod_img = img)
+            v = Produto.objects.get(id= request.POST.get('product_id')).preço
+            cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=q, prod_img = img, preço = float(v) * float(q))
     else:
         return redirect('/accounts/login')
 
