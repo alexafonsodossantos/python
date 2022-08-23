@@ -24,9 +24,18 @@
         
     </table>
     <br>
-    <a href="#">Comprar agora</a> <br>
-    <a href="\loja\cart_add\{{ user.username }}\{{ produto.id }}">Adicionar ao carrinho</a> <br>
-    <a href="#">Ver similares</a>
+    
+    <form method="POST">
+        <fieldset>
+          <legend>Form</legend>
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="number" id="qtd">
+          <input type="hidden" id="username" value="{{ user.username }}">
+          <input type="hidden" id="product_id" value="{{ produto.id }}">
+          <button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
+        </fieldset>
+      </form>
 </div>
 
 <h2>Descrição: </h2>
