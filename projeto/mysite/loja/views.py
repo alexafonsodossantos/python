@@ -37,4 +37,4 @@ def cart_add(request, username, product_id):
     u = User.objects.get(username=username)
     p = Produto.objects.get(id=product_id)
     cart_instance = Cart.objects.create(username=u, produtos_id = p, qtd=1)
-    return redirect('/loja/cart/')
+    return redirect('/loja/cart/'+str(u))
