@@ -25,14 +25,14 @@
     </table>
     <br>
     
-    <form method="POST">
+    <form method="POST" action="\loja\cart_add\">
         <fieldset>
           <legend>Form</legend>
           {% csrf_token %}
           {{ form.as_p }}
-          <input type="number" id="qtd">
-          <input type="hidden" id="username" value="{{ user.username }}">
-          <input type="hidden" id="product_id" value="{{ produto.id }}">
+          <input type="number" id="qtd" name="qtd"> <br>
+          <input type="hidden" id="username" name="username" value="{{ user.username }}">
+          <input type="hidden" id="product_id" name="product_id" value="{{ produto.id }}">
           <button type="submit" class="btn btn-primary">Adicionar ao carrinho</button>
         </fieldset>
       </form>

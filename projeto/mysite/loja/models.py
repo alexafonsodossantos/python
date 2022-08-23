@@ -32,7 +32,7 @@ class Cart(models.Model):
     id = models.BigAutoField(primary_key=True)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     produtos_id = models.ForeignKey(Produto, on_delete = models.CASCADE)
-    qtd = models.IntegerField()
+    qtd = models.IntegerField(default=1)
 
 
     def __str__(self):
