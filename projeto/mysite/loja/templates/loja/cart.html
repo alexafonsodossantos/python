@@ -1,6 +1,42 @@
 {% extends "loja/base_generic.html" %}
 {% load static %}
 {% block content %}
+
+<script>
+    function updateValue(id){
+        x = parseInt(document.getElementById(id).value)
+        value = parseInt(document.getElementById('number').value)
+        var total = value * x
+        document.getElementById('total').value = total
+    }
+
+
+    function add(id){
+        var v1 = parseInt(document.getElementById('number').value)
+        document.getElementById('number').value = v1 + 1;
+        updateValue(id)
+    }
+
+    function sub(id){
+        var v1 = parseInt(document.getElementById('number').value)
+        if (v1 == 0) {
+            window.alert("ayyyyy");
+            v1 = 0;
+            updateValue(id)
+        } else {
+            v1 = v1 - 1;
+            document.getElementById('number').value = v1
+            updateValue(id)
+        }
+    }
+</script>
+
+
+
+
+
+
+
 <h1>Meu carrinho</h1>
 <table>
 {% if cart %}
@@ -9,9 +45,14 @@
         <a href="/loja/{{ produto.produtos_id }}/">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
         </a>
-        {{produto.qtd}} <br>
-        {{produto.produtos_id}} <br>
-        {{produto.preço}} <br>
+
+                    {{produto.produtos_id}}<br>
+                    <input type="hidden" id="{{produto.preço}}" value="{{produto.preço}}" name="preco">
+                    <input type="number" name="number" id="{{produto.preço}}" value="0"><br>    
+                    <input type="number" name="total" id="total" value="0"><br>
+                <button onClick="sub(parseInt(document.getElementByName(preco)))">-</button>
+                <button onClick="add(parseInt(document.getElementByName(preco)))">+</button>
+
         </div>
     {% endfor %}
 </table>
@@ -19,3 +60,7 @@
     <p>Não há produtos.</p>
 {% endif %}
 {% endblock %}
+
+
+{{produto.qtd}}
+{{produto.produtos_id}}

@@ -1,11 +1,33 @@
 <script>
-    function add_p(){
-        valor = document.getElementById("teste").value;
-        valor = valor + 1;
-        document.getElementById("teste").value = valor;
-        
+    function updateValue(){
+        const x = 2
+        value = parseInt(document.getElementById('number').value)
+        var total = value * x
+        document.getElementById('total').value = total
+    }
+
+
+    function add(){
+        var v1 = parseInt(document.getElementById('number').value)
+        document.getElementById('number').value = v1 + 1;
+        updateValue()
+    }
+
+    function sub(){
+        var v1 = parseInt(document.getElementById('number').value)
+        if (v1 == 0) {
+            window.alert("ayyyyy");
+            v1 = 0;
+            updateValue()
+        } else {
+            v1 = v1 - 1;
+            document.getElementById('number').value = v1
+            updateValue()
+        }
     }
 </script>
+<input type="number" name="number" id="number" value="0"><br>
+<input type="number" name="total" id="total" value="0"><br>
+<button onClick="sub()">-</button>
+<button onClick="add()">+</button>
 
-<input type="number" id="teste">
-<button onclick="add_p()"></button>
