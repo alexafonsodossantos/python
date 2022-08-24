@@ -153,28 +153,41 @@ h1 {
 }
 
 .preco_box {
-    color: #FFFFFF;
+    width:70%;
+    color: white;
     border: none;
     background-color: transparent;
     resize: none;
     outline: none;
-    font-size: large;
-    margin: auto;
+    font-size: larger;
     display: block;
     text-align: center;
-    width: 10%;
 
 }
 
 .total_box {
+    width:70%;
     color: #00bbff;
     border: none;
     background-color: transparent;
     resize: none;
     outline: none;
     font-size: larger;
-    margin: auto;
     display: block;
-    text-align: center;
+    text-align: right;
+
+}
+
+.qtbutton{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    padding: none;
+    margin: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+    font-size:large;
+    color: white;
 
 }

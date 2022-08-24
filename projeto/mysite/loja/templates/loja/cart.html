@@ -1,12 +1,7 @@
 {% extends "loja/base_generic.html" %}
 {% load static %}
 {% block content %}
-
-
 <script>
-
-
-
         function add(id){
         var v1 = parseInt(document.getElementById('number'+id).value)
         document.getElementById('number'+id).value = v1 + 1;
@@ -26,37 +21,44 @@
         }
     }
 </script>
-
-
-
-
-
-
 <h1>Meu carrinho</h1>
-<table>
 {% if cart %}
     {% for produto in cart %}
     <div class="produto_cart"> 
         <a href="/loja/{{ produto.produtos_id }}/">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
         </a>
+            <input type="hidden" id="{{produto.produtos_id}}" value="{{produto.preço}}" name="preco">
+                    <table >
+                        <tr>
+                            <td>
+                                {{produto.produtos_id}}
+                            </td>
+                        </tr>
 
+                        <tr>
+                            <td>Quantidade:</td>
+                            <td style="text-align:center"><button class="qtbutton" onClick="sub('{{produto.produtos_id}}')"> - </button></td>
+                            <td> <input type="text" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}"></td>
+                            <td style="text-align:center"><button class="qtbutton" onClick="add('{{produto.produtos_id}}')"> + </button></td>
+                        </tr>
+                        </table>
+                        <table>
+                        <tr>
+                            <td>Total:</td>
+                            <td><input type="text" class="total_box" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="R$ {% widthratio produto.qtd 1 produto.preço %}"></td>
+                        </tr>
 
-                    {{produto.produtos_id}}
-                    <input type="hidden" id="{{produto.produtos_id}}" value="{{produto.preço}}" name="preco">
-                    Quantidade: <input type="text" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}">
-                    Total: <input type="text" class="total_box" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="{% widthratio produto.qtd 1 produto.preço %}">
-                    <button onClick="sub('{{produto.produtos_id}}')">-</button>
-                    <button onClick="add('{{produto.produtos_id}}')">+</button>
-      
-
+                
+                    </table>
+                    
+                    
         </div>
     {% endfor %}
 </table>
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}
-
 <script>
     function updateValue(id){
         // x = preco
@@ -68,16 +70,9 @@
         console.log(value)
 
         var total = value * x
-        document.getElementById('total'+id).value = total
+        document.getElementById('total'+id).value = "R$"+ total
     } 
-
-
-
 </script>
 
 
 {% endblock %}
-
-
-{{produto.qtd}}
-{{produto.produtos_id}}
