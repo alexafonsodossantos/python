@@ -1,37 +1,39 @@
+// functions to update the total value when qt is changed
 
-function teste(){
-    console.log("file is loaded");
-}
 
-function updateValue(id){
-            // x = preco
-            x = parseInt(document.getElementById(id).value)
-            console.log(x)
-    
-            // value = qtd
-            value = parseInt(document.getElementById('number'+id).value)
-            console.log(value)
-    
-            var total = value * x
+function update_total_value(id){
+            // gets the value from the price and qt box
+            preco = parseInt(document.getElementById(id).value)
+            qtd = parseInt(document.getElementById('number'+id).value)
+
+            // multiply and update price box
+            var total = qtd * preco
             document.getElementById('total'+id).value = "R$"+ total
     } 
     
-function add(id){
-        var v1 = parseInt(document.getElementById('number'+id).value)
-        document.getElementById('number'+id).value = v1 + 1;
-        updateValue(id)
+function add_to_qt(id){
+        // gets the value from the qt box
+        var qtd = parseInt(document.getElementById('number'+id).value)
+
+        // increments qt and updates price box
+        document.getElementById('number'+id).value = qtd + 1;
+        update_total_value(id)
     }
 
-function sub(id){
-        var v1 = parseInt(document.getElementById('number'+id).value)
-        if (v1 == 1) {
-            window.alert("ayyyyy");
-            v1 = 1;
-            updateValue(id)
+function sub_from_qt(id){
+        // gets the value from the qt box
+        var qtd = parseInt(document.getElementById('number'+id).value)
+
+        //if qt == 1 throws a warning and sets value back to 1
+        if (qtd == 1) {
+            window.alert("Warning");
+            qtd = 1;
+            update_total_value(id)
         } else {
-            v1 = v1 - 1;
-            document.getElementById('number'+id).value = v1
-            updateValue(id)
+
+            //decrements qtd and updates price box
+            qtd = qtd - 1;
+            document.getElementById('number'+id).value = qtd
+            update_total_value(id)
         }
     }
-

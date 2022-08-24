@@ -20,9 +20,9 @@
 
                         <tr>
                             <td>Quantidade:</td>
-                            <td style="text-align:center"><button class="qtbutton" onClick="sub('{{produto.produtos_id}}')"> - </button></td>
+                            <td style="text-align:center"><button class="qtbutton" onClick="sub_from_qt('{{produto.produtos_id}}')"> - </button></td>
                             <td> <input type="text" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}"></td>
-                            <td style="text-align:center"><button class="qtbutton" onClick="add('{{produto.produtos_id}}')"> + </button></td>
+                            <td style="text-align:center"><button class="qtbutton" onClick="add_to_qt('{{produto.produtos_id}}')"> + </button></td>
                         </tr>
                         </table>
                         <table>
