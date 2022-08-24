@@ -1,75 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loja virtual - a mais virtual de todas as lojas!</title>
-    {% load static %}
-<link rel="stylesheet" href="{% static 'loja/style.css' %}">
 <script>
-function closeWarning() {
-    document.getElementById("warning").style.visibility = "hidden";
-}
+    function add_p(){
+        valor = document.getElementById("teste").value;
+        valor = valor + 1;
+        document.getElementById("teste").value = valor;
+        
+    }
 </script>
-</head>
-<body>
-    <div class="warning" id="warning">This is a warning.<br>
-        <button type="button" onClick="closeWarning()"> Fechar </button>
-    </div>
-</body>
-</html>
 
-
-
-<h1>{{ produto.nome }}</h1>
-<h1>{{ produto.marca }}</h1>
-<h1>{{ produto.qtd }}</h1>
-<h1>{{ produto.preço }}</h1>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-
-
-
-{% if latest_produto_list %}
-    <ul>
-    {% for produto in latest_produto_list %}
-    {{ produto.nome}}
-    {{ produto.preço}}
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>Não há produtos.</p>
-{% endif %}
-
-
-
--->
-
+<input type="number" id="teste">
+<button onclick="add_p()"></button>

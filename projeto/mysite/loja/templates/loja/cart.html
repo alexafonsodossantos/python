@@ -1,33 +1,18 @@
 {% extends "loja/base_generic.html" %}
 {% load static %}
 {% block content %}
-
-<script>
-    var teste = 1
-    document.getElementById(valor).innerHTML = teste
-</script>
-
-
 <h1>Meu carrinho</h1>
 <table>
 {% if cart %}
     {% for produto in cart %}
-
-
     <div class="produto"> 
         <a href="/loja/{{ produto.produtos_id }}/">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
         </a>
-        
         {{produto.qtd}} <br>
         {{produto.produtos_id}} <br>
         {{produto.preço}} <br>
-
-        <div id="valor"></div>
-        
-    </div>
-
-
+        </div>
     {% endfor %}
 </table>
 {% else %}
