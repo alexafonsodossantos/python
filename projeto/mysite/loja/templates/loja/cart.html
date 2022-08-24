@@ -2,35 +2,27 @@
 {% load static %}
 {% block content %}
 
+
 <script>
-    function updateValue(id){
-        x = parseInt(document.getElementById(id).value)
-        value = parseInt(document.getElementById('number').value)
-        var total = value * x
-        document.getElementById('total').value = total
-    }
-
-
-    function add(id){
-        var v1 = parseInt(document.getElementById('number').value)
-        document.getElementById('number').value = v1 + 1;
+        function add(id){
+        var v1 = parseInt(document.getElementById('number'+id).value)
+        document.getElementById('number'+id).value = v1 + 1;
         updateValue(id)
     }
 
     function sub(id){
-        var v1 = parseInt(document.getElementById('number').value)
+        var v1 = parseInt(document.getElementById('number'+id).value)
         if (v1 == 0) {
             window.alert("ayyyyy");
             v1 = 0;
             updateValue(id)
         } else {
             v1 = v1 - 1;
-            document.getElementById('number').value = v1
+            document.getElementById('number'+id).value = v1
             updateValue(id)
         }
     }
 </script>
-
 
 
 
@@ -47,11 +39,15 @@
         </a>
 
                     {{produto.produtos_id}}<br>
-                    <input type="hidden" id="{{produto.preço}}" value="{{produto.preço}}" name="preco">
-                    <input type="number" name="number" id="{{produto.preço}}" value="0"><br>    
-                    <input type="number" name="total" id="total" value="0"><br>
-                <button onClick="sub(parseInt(document.getElementByName(preco)))">-</button>
-                <button onClick="add(parseInt(document.getElementByName(preco)))">+</button>
+                    <input type="hidden" id="{{produto.produtos_id}}" value="{{produto.preço}}" name="preco">
+
+                    </script>
+                    <input type="number" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="0"><br>
+                    <input type="number" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="0"><br>
+
+                    <button onClick="sub('{{produto.produtos_id}}')">-</button>
+                    <button onClick="add('{{produto.produtos_id}}')">+</button>>
+      
 
         </div>
     {% endfor %}
@@ -59,6 +55,20 @@
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}
+
+<script>
+    function updateValue(id){
+        x = parseInt(document.getElementById(id).value)
+        value = parseInt(document.getElementById('number'+id).value)
+        var total = value * x
+        document.getElementById('total'+id).value = total
+    }
+
+
+
+</script>
+
+
 {% endblock %}
 
 
