@@ -76,6 +76,28 @@ h1 {
 
 }
 
+
+
+.produto_cart {
+	width:auto;
+    height: 40vh;
+	background-color: black;
+	border: #292929 2px solid;
+    border-radius: 15px;
+    background: transparent;
+    min-width: 200px;
+    min-height: 300px;
+    max-width: 16%!important;
+    max-height: 30% !important;
+    float: left;
+    padding: 1%;
+    margin: 0.3%;
+
+}
+
+
+
+
 .produto:hover {
 	background-color: #292929;
 	transition: background 500ms;
@@ -127,5 +149,32 @@ h1 {
     background-color:#262626; 
     border-radius:15px; 
     display:inline-table;
+
+}
+
+.preco_box {
+    color: #FFFFFF;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: large;
+    margin: auto;
+    display: block;
+    text-align: center;
+    width: 10%;
+
+}
+
+.total_box {
+    color: #00bbff;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    outline: none;
+    font-size: larger;
+    margin: auto;
+    display: block;
+    text-align: center;
 
 }

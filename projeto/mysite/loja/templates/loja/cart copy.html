@@ -4,9 +4,6 @@
 
 
 <script>
-
-
-
         function add(id){
         var v1 = parseInt(document.getElementById('number'+id).value)
         document.getElementById('number'+id).value = v1 + 1;
@@ -36,16 +33,17 @@
 <table>
 {% if cart %}
     {% for produto in cart %}
-    <div class="produto_cart"> 
+    <div class="produto"> 
         <a href="/loja/{{ produto.produtos_id }}/">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
         </a>
 
-
-                    {{produto.produtos_id}}
+                    {{produto.produtos_id}}<br>
                     <input type="hidden" id="{{produto.produtos_id}}" value="{{produto.preço}}" name="preco">
-                    Quantidade: <input type="text" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}">
-                    Total: <input type="text" class="total_box" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="{% widthratio produto.qtd 1 produto.preço %}">
+
+                    </script>
+                    Quantidade: <input type="number" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}">
+                    Total: <input type="number" class="total_box" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="{{produto.preço}}">
                     <button onClick="sub('{{produto.produtos_id}}')">-</button>
                     <button onClick="add('{{produto.produtos_id}}')">+</button>
       
@@ -59,17 +57,11 @@
 
 <script>
     function updateValue(id){
-        // x = preco
         x = parseInt(document.getElementById(id).value)
-        console.log(x)
-
-        // value = qtd
         value = parseInt(document.getElementById('number'+id).value)
-        console.log(value)
-
         var total = value * x
         document.getElementById('total'+id).value = total
-    } 
+    }
 
 
 
