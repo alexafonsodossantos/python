@@ -58,3 +58,18 @@ def cart_add(request):
         return redirect('/accounts/login')
 
     return redirect('/loja/cart/'+str(u))
+
+def checkout(request, username):
+    u = User.objects.get(username=username)
+    cart_items = Cart.objects.filter(username = u)
+    total = 0
+    for a in cart_items:
+        subtotal = a.preço * a.qtd
+        total += subtotal
+    
+    template = loader.get_template('loja/checkout.html')
+    context = {
+        'cart_items': cart_items,
+        'total' : total,
+    }
+    return HttpResponse(template.render(context, request))

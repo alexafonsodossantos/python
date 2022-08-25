@@ -1,0 +1,13 @@
+{% extends "loja/base_generic.html" %}
+{% load static %}
+
+{% block content %}
+<h1>Checkout</h1>
+
+{% if cart_items %}
+    {% for produto in cart_items %}
+    {{total}}
+
+{% endfor %}
+{% endif %}
+{% endblock %}
