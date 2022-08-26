@@ -37,8 +37,23 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'loja'
+    'loja',
+    'payments'
 ]
+
+PAYMENT_HOST = 'localhost:8000'
+PAYMENT_USES_SSL = False
+PAYMENT_MODEL = 'loja.Payment'
+
+PAYMENT_VARIANTS = {
+    "mercadopago": (
+        "payments.mercadopago.MercadoPagoProvider",
+        {
+            "access_token": "TEST-1033319393029642-082513-ede8304070bf8390bd610d46f738a2c4-153895849",
+            "sandbox": DEBUG,
+        },
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
