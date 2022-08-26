@@ -23,7 +23,7 @@ class Payment(BasePayment):
     def get_success_url(self) -> str:
         # Return a URL where users are redirected after
         # they successfully complete a payment:
-        return f"http://example.com/payments/{self.pk}/success"
+        return f"/loja"
 
     def get_purchased_items(self) -> [PurchasedItem]:
         # Return items that will be included in this payment.
@@ -32,7 +32,7 @@ class Payment(BasePayment):
             sku='BSKV',
             quantity=9,
             price=Decimal(10),
-            currency='USD',
+            currency='BRL',
         )
 class Produto(models.Model):
     CATEGORIAS = (

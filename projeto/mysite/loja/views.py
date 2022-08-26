@@ -10,16 +10,39 @@ from django.template.response import TemplateResponse
 from payments import get_payment_model, RedirectNeeded
 
 def payment_details(request, payment_id):
+
+
+    Payment = get_payment_model()
+    payment = Payment.objects.create(
+    variant='mercadopago',  # this is the variant from PAYMENT_VARIANTS
+    description='Compra',
+    total=Decimal(request.POST.get('total')),
+    tax=Decimal(20),
+    currency='BRL',
+    delivery=Decimal(10),
+    billing_first_name=(request.POST.get('nome')),
+    billing_last_name=(request.POST.get('sobrenome')),
+    billing_address_1=(request.POST.get('addr1')),
+    billing_address_2=(request.POST.get('addr2')),
+    billing_city=(request.POST.get('cidade')),
+    billing_postcode=(request.POST.get('cep')),
+    billing_country_code='GB',
+    billing_country_area='Greater London',
+    customer_ip_address='127.0.0.1',
+    
+    )
+
+
     payment = get_object_or_404(get_payment_model(), id=payment_id)
 
     try:
         form = payment.get_form(data=request.POST or None)
     except RedirectNeeded as redirect_to:
-        return redirect(str(redirect_to))
+        return redirect(str('/loja/submit_payment'))
 
     return TemplateResponse(
         request,
-        'payment.html',
+        'submit_payment.html',
         {'form': form, 'payment': payment}
     )
 
@@ -91,29 +114,53 @@ def checkout(request, username):
     for a in cart_items:
         subtotal = a.preço * a.qtd
         total += subtotal
-    
-    Payment = get_payment_model()
-    payment = Payment.objects.create(
-    variant='default',  # this is the variant from PAYMENT_VARIANTS
-    description='Compra',
-    total=Decimal(total),
-    tax=Decimal(20),
-    currency='BRL',
-    delivery=Decimal(10),
-    billing_first_name='Sherlock',
-    billing_last_name='Holmes',
-    billing_address_1='221B Baker Street',
-    billing_address_2='',
-    billing_city='London',
-    billing_postcode='NW1 6XE',
-    billing_country_code='GB',
-    billing_country_area='Greater London',
-    customer_ip_address='127.0.0.1',
-    )
-    
     template = loader.get_template('loja/checkout.html')
     context = {
         'cart_items': cart_items,
         'total' : total,
     }
     return HttpResponse(template.render(context, request))
+
+
+
+def submit_payment(request):
+    return render(request, 'loja/submit_payment.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+def dummy_payment():
+    Payment = get_payment_model()
+    payment = Payment.objects.create(
+    variant='mercadopago',  # this is the variant from PAYMENT_VARIANTS
+    description='Compra',
+    total=Decimal(request.POST.get('total')),
+    tax=Decimal(20),
+    currency='BRL',
+    delivery=Decimal(10),
+    billing_first_name=(request.POST.get('nome')),
+    billing_last_name=(request.POST.get('sobrenome')),
+    billing_address_1=(request.POST.get('addr1')),
+    billing_address_2=(request.POST.get('addr2')),
+    billing_city=(request.POST.get('cidade')),
+    billing_postcode=(request.POST.get('cep')),
+    billing_country_code='GB',
+    billing_country_area='Greater London',
+    customer_ip_address='127.0.0.1',
+    
+    )
+    return render(request, '/loja/submit_payment.html')
+    
