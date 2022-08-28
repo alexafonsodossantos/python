@@ -5,9 +5,15 @@
 <h1>Meu carrinho</h1>
 
 {% if cart %}
+<form method="POST" action="/loja/update_cart">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="hidden" id="username" name="username" value="{{ user.username }}">
+    
+    
     {% for produto in cart %}
     <div class="produto_cart"> 
-        <a href="/loja/{{ produto.produtos_id }}/">
+        <input type="hidden" id="product_id" name="product_id" value="{{ produto.id }}">
             <img class="imagem_produto" src="/loja/{{ produto.prod_img }}"></img>
         </a>
             <input type="hidden" id="{{produto.produtos_id}}" value="{{produto.preço}}" name="preco">
@@ -15,26 +21,28 @@
                         <tr>
                             <td>
                                 {{produto.produtos_id}}
+                                <input type="hidden" name="produto_nome" id="produto_nome" value="{{produto.produtos_id}}">
                             </td>
                         </tr>
 
                         <tr>
                             <td>Quantidade:</td>
-                            <td style="text-align:center"><button class="qtbutton" onClick="sub_from_qt('{{produto.produtos_id}}')"> - </button></td>
-                            <td> <input type="text" class="preco_box" name="number{{produto.produtos_id}}" id="number{{produto.produtos_id}}" value="{{produto.qtd}}"></td>
-                            <td style="text-align:center"><button class="qtbutton" onClick="add_to_qt('{{produto.produtos_id}}')"> + </button></td>
+                            <td style="text-align:center"><button type="button" class="qtbutton" onClick="sub_from_qt('{{produto.produtos_id}}')"> - </button></td>
+                            <td> <input type="text" class="preco_box" name="number" id="number{{produto.produtos_id}}" value="{{produto.qtd}}"></td>
+                            <td style="text-align:center"><button type="button" class="qtbutton" onClick="add_to_qt('{{produto.produtos_id}}')"> + </button></td>
                         </tr>
                         </table>
                         <table>
                         <tr>
                             <td>Total:</td>
-                            <td><input type="text" class="total_box" name="total{{produto.produtos_id}}" id="total{{produto.produtos_id}}" value="R$ {% widthratio produto.qtd 1 produto.preço %}"></td>
+                            <td><input type="text" class="total_box" name="total" id="total{{produto.produtos_id}}" value="{% widthratio produto.qtd 1 produto.preço %}"></td>
                         </tr>
                     </table>            
         </div>
     {% endfor %}
-<a href="/loja/checkout/{{ user.username }}/"><h1> Prosseguir para checkout -></h1></a>
+
 </table>
+<button type="submit">Prosseguir para checkout</button>
 {% else %}
     <p>Não há produtos.</p>
 {% endif %}

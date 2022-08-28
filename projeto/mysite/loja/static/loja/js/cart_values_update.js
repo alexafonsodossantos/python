@@ -8,7 +8,7 @@ function update_total_value(id){
 
             // multiply and update price box
             var total = qtd * preco
-            document.getElementById('total'+id).value = "R$"+ total
+            document.getElementById('total'+id).value = total
     } 
     
 function add_to_qt(id){

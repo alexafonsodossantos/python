@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>Checkout</h1>
-
+{{total}}
 <script src="https://sdk.mercadopago.com/js/v2"></script>
 <script>
     const mp = new MercadoPago('TEST-a8d60b1c-bb54-4051-b12e-7958cf33c574');
@@ -53,25 +53,3 @@
     </form>
     <div id="cardPaymentBrick_container"></div>
 {% endblock %}
-
-
-<!--    
-    Payment = get_payment_model()
-    payment = Payment.objects.create(
-    variant='mercadopago',  # this is the variant from PAYMENT_VARIANTS
-    description='Compra',
-    total=Decimal(total),
-    tax=Decimal(20),
-    currency='BRL',
-    delivery=Decimal(10),
-    billing_first_name='Sherlock',
-    billing_last_name='Holmes',
-    billing_address_1='221B Baker Street',
-    billing_address_2='',
-    billing_city='London',
-    billing_postcode='NW1 6XE',
-    billing_country_code='GB',
-    billing_country_area='Greater London',
-    customer_ip_address='127.0.0.1',
-    )
-    -->
