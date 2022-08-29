@@ -4,4 +4,14 @@
 {% block content %}
 <h1>Categorias</h1>
 
+
+{% if categorias_list %}
+    {% for categoria in categorias_list %}
+      <a href="categorias_filter/{{categoria.categoria}}/">  {{categoria.categoria}} </a><br>
+
+    {% endfor %}
+{% else %}
+    <p>Não há categorias.</p>
+{% endif %}
+
 {% endblock %}

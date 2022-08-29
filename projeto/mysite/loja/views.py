@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
-from .models import Produto, User, Cart
+from .models import Produto, User, Cart, Categorias
 from django.template import loader
 from decimal import Decimal
 from django.shortcuts import get_object_or_404, redirect
@@ -22,7 +22,18 @@ def promocoes(request):
     return render(request, 'loja/promocoes.html')
 
 def categorias(request):
-    return render(request, 'loja/categorias.html')
+    categorias_list = Categorias.objects.order_by('id')
+    template = loader.get_template('loja/categorias.html')
+    context = {
+        'categorias_list': categorias_list,
+    }
+    return HttpResponse(template.render(context, request))
+
+def categorias_filter(request, cat_id):
+    #produtos_list = Produto.objects.order_by(categoria = cat_id)
+    #print(produtos_list)
+    return redirect('loja')
+
 
 def perfil(request):
     return render(request, 'loja/perfil.html')

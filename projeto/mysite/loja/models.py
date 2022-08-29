@@ -8,19 +8,25 @@ from django.db import models
 User=get_user_model()
 
 
+
+
+
+
+    
+class Categorias(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    categoria = models.CharField(max_length=50)
+    cat_img  = models.ImageField("Category image", upload_to='loja/static/loja/images', null=True)
+    
+    def __str__(self):
+        return str(self.categoria)
+
 class Produto(models.Model):
-    CATEGORIAS = (
-        ('1', 'Processadores'),
-        ('2', 'RAM'),
-        ('3', 'Placas-Mãe'),
-        ('4', 'Air Cooler'),
-        ('5', 'Water Cooler'),
-        ('6', 'Periféricos'),
-    )
+
     id = models.BigAutoField(primary_key=True)
     nome = models.CharField(max_length=140)
     marca = models.CharField(max_length=140)
-    categoria = models.CharField(max_length=140, choices = CATEGORIAS)
+    categoria = models.ForeignKey(Categorias, on_delete=models.CASCADE)
     qtd = models.IntegerField()
     preço = models.FloatField()
     prod_img = models.ImageField("Product Image", upload_to='loja/static/loja/images', null=True)
@@ -28,7 +34,6 @@ class Produto(models.Model):
 
     def __str__(self):
         return str(self.id)
-
 
 class Cart(models.Model):
     id = models.BigAutoField(primary_key=True)
