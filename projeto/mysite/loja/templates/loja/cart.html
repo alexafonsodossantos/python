@@ -20,7 +20,7 @@
                     <table >
                         <tr>
                             <td>
-                                {{produto.produtos_id}}
+                                <a class="nomeproduto" href="/loja/{{ produto.id }}/" > {{ produto.produtos_nome}} </a>
                                 <input type="hidden" name="produto_nome" id="produto_nome" value="{{produto.produtos_id}}">
                             </td>
                         </tr>
@@ -40,7 +40,15 @@
                     </table>            
         </div>
     {% endfor %}
-
+    <script>
+        var i;
+        var divs = document.getElementsByTagName('a');
+        for(i=0;i<divs.length;i++) {
+          if(divs[i].className == 'nomeproduto') {
+            divs[i].innerHTML = divs[i].innerHTML.substring(0,50) + "...";
+          }
+        }
+    </script>
 </table>
 <button type="submit">Prosseguir para checkout</button>
 {% else %}

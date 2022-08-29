@@ -34,6 +34,7 @@ class Cart(models.Model):
     id = models.BigAutoField(primary_key=True)
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     produtos_id = models.ForeignKey(Produto, on_delete = models.CASCADE)
+    produtos_nome = models.CharField(max_length=255, null=True)
     qtd = models.IntegerField(default=1)
     prod_img = models.CharField(max_length=255)
     preço = models.FloatField()
