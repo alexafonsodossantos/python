@@ -30,9 +30,12 @@ def categorias(request):
     return HttpResponse(template.render(context, request))
 
 def categorias_filter(request, cat_id):
-    #produtos_list = Produto.objects.order_by(categoria = cat_id)
-    #print(produtos_list)
-    return redirect('loja')
+    produtos_list = Produto.objects.filter(categoria = cat_id)
+    template = loader.get_template('loja/index.html')
+    context = {
+        'latest_produto_list': produtos_list,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 def perfil(request):

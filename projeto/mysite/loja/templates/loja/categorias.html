@@ -7,7 +7,24 @@
 
 {% if categorias_list %}
     {% for categoria in categorias_list %}
-      <a href="categorias_filter/{{categoria.categoria}}/">  {{categoria.categoria}} </a><br>
+
+
+
+
+      <div class="produto"> 
+        <a href="categorias_filter/{{categoria.id}}/">
+            <img class="imagem_produto" src="{{categoria.cat_img.url}}"></img>
+        </a>       
+        <p>
+            <a class="nomeproduto" href="categorias_filter/{{categoria.id}}/" > {{categoria.categoria}} 
+              </a>
+              </p>
+    </div>
+
+
+
+
+
 
     {% endfor %}
 {% else %}
