@@ -1,11 +1,3 @@
-import os
-
-import csv
-
-
-
-
-
 class Carro:
     placa = ""
     marca = ""
@@ -15,98 +7,21 @@ class Carro:
     cor = ""
     preco = 0.0
 
-carros = []
-
-with open('carros.csv') as csv_file:
-    csv_reader = csv.reader(csv_file, delimiter=';')
-    for row in csv_reader:
-        carro = Carro()
-        carro.placa = row[0]
-        carro.marca = row[1]
-        carro.modelo = row[2]
-        carro.ano = row[3]
-        carro.kilometragem = row[4]
-        carro.cor = row[5]
-        carro.preco = row[6]
-        carros.append(carro)
-
-
-
-while True:
-
-    print("--- SISTEMA CONCESSIONÁRIA ---")
-    print("1 - Cadastrar veículos")
-    print("2 - Visualizar todos os veículos")
-    print("3 - Pesquisar veículo")
-    print("4 - Remover veículo")
-    print("5 - Sair")
-
-    escolha = int(input("Sua escolha: "))
-
-    if escolha == 1:
-        carro = Carro()
-        carro.placa = input("Digite a placa: ")
-        carro.marca = input("Digite a marca: ")
-        carro.modelo = input("Digite o modelo: ")
-        carro.ano = int(input("Digite o ano: "))
-        carro.kilometragem = int(input("Digite a kilometragem: "))
-        carro.cor = input("Digite a cor: ")
-        carro.preco = float(input("Digite o preço: "))
-
-        carros.append(carro)
-
-        save = open('carros.csv', "a")
-        save.write(carro.placa + ";")
-        save.write(carro.marca + ";")
-        save.write(carro.modelo + ";")
-        save.write(str(carro.ano) + ";")
-        save.write(str(carro.kilometragem) + ";")
-        save.write(carro.cor + ";")
-        save.write(str(carro.preco)+ "\n")
-        save.close()
-        
-        print("Veículo cadastrado com sucesso!")
-        input("Pressione qualquer tecla para continuar.")
-        os.system('cls')
-
-    elif escolha == 2:
-        for carro in carros:
-            print("------------------------")
-            print("Placa: ", carro.placa)
-            print("Marca: ", carro.marca)
-            print("Modelo: ", carro.modelo)
-            print("Ano: ", carro.ano)
-            print("Kilometragem: ", carro.kilometragem)
-            print("Cor: ", carro.cor)
-            print("Preço: ", carro.preco)
-        input("Pressione qualquer tecla para continuar.")
-        os.system('cls')
+    def criar_veiculo(self):
+        self.placa = input("Digite a placa: ")
+        self.marca = input("Digite a marca: ")
+        self.modelo = input("Digite o modelo: ")
+        self.ano = int(input("Digite o ano: "))
+        self.kilometragem = int(input("Digite a kilometragem: "))
+        self.cor = input("Digite a cor: ")
+        self.preco = float(input("Digite o preço: "))
     
-    elif escolha == 3:
-        placa = input("Digite a placa: ")
-        for carro in carros:
-            if carro.placa == placa:
-                print("Placa: ", carro.placa)
-                print("Marca: ", carro.marca)
-                print("Modelo: ", carro.modelo)
-                print("Ano: ", carro.ano)
-                print("Kilometragem: ", carro.kilometragem)
-                print("Cor: ", carro.cor)
-                print("Preço: ", carro.preco)
-                input("Pressione qualquer tecla para continuar.")
-                os.system('cls')
-
-
-
-    elif escolha == 4:
-        placa = input("Digite a placa: ")
-        for carro in carros:
-            if carro.placa == placa:
-                carros.remove(carro)
-                print("Veículo removido.")
-                input("Pressione qualquer tecla para continuar.")
-                os.system('cls')
-
-    elif escolha == 5:
-        print("Até a próxima!")
-        break
+    def mostrar_veiculo(self):
+        print("------------------------")
+        print("Placa: ", self.placa)
+        print("Marca: ", self.marca)
+        print("Modelo: ", self.modelo)
+        print("Ano: ", self.ano)
+        print("Kilometragem: ", self.kilometragem)
+        print("Cor: ", self.cor)
+        print("Preço: ", self.preco)
